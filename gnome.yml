@@ -10,7 +10,7 @@
   become_user: sergpolly
   dconf:
     key: "/org/gnome/desktop/background/picture-uri"
-    value: "'file:///home/sergpolly/cat.jpg'"
+    value: "'file:///home/sergpolly/Pictures/cat.jpg'"
     state: present
 
 # set wallpaper position
