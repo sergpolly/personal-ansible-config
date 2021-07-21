@@ -1,0 +1,12 @@
+# miniconda installer
+- name: Download miniconda installer with check (sha256)
+  become_user: sergpolly
+  get_url:
+    url: https://repo.anaconda.com/miniconda/Miniconda3-py39_4.9.2-Linux-x86_64.sh
+    dest: ~/install_conda.sh`
+    checksum: sha256:536817d1b14cb1ada88900f5be51ce0a5e042bae178b5550e62f61e223deae7c
+
+# install miniconda
+- name: install miniconda
+  become_user: sergpolly
+  command: "bash ~/install_conda.sh"
