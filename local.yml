@@ -1,0 +1,87 @@
+---
+- hosts: localhost
+  become: true
+  pre_tasks:
+    - name: update repositories
+      apt: update_cache=yes
+      changed_when: False
+
+  tasks:
+    # - include: tasks/users.yml
+    - name: Install packages
+      apt: name={{item}}
+      with_items:
+        - htop
+        - tmux
+        - psutils
+
+    # miniconda installer
+    - name: Download miniconda installer with check (sha256)
+      become_user: sergpolly
+      get_url:
+        url: https://repo.anaconda.com/miniconda/Miniconda3-py39_4.9.2-Linux-x86_64.sh
+        dest: ~/install_conda.sh`
+        checksum: sha256:536817d1b14cb1ada88900f5be51ce0a5e042bae178b5550e62f61e223deae7c
+
+    # install miniconda
+    - name: install miniconda
+      become_user: sergpolly
+      command: "bash ~/install_conda.sh"
+
+    # copy favorite wallpaper locally
+    - name: copy wallpaper
+      copy:
+        src: media/cat_astronaut-wallpaper.jpg
+        dest: ~/Pictures/cat.jpg
+        owner: sergpolly
+        group: sergpolly
+        mode: 755
+
+    # set wallpaper
+    - name: set wallpaper
+      become_user: sergpolly
+      dconf:
+        key: "/org/gnome/desktop/background/picture-uri"
+        value: "'file:///home/sergpolly/cat.jpg'"
+        state: present
+
+    # set wallpaper position
+     - name: set wallpaper position
+       become_user: sergpolly
+       dconf:
+         key: "/org/gnome/desktop/background/picture-options"
+         value: "'zoom'"
+         state: present
+
+    # set keyboard layouts
+    - name: set available keyboard layouts
+      become_user: sergpolly
+      dconf:
+        key: "org/gnome/desktop/input-sources/sources"
+        value: "[('xkb', 'us'), ('xkb', 'ru')]"
+        state: present
+
+    # set keyboard swap lctrl and lalt
+    - name: swap left ctrl and alt
+      become_user: sergpolly
+      dconf:
+        key: "org/gnome/desktop/input-sources/xkb-options"
+        value: "['ctrl:swap_lalt_lctl']"
+        state: present
+
+    # set naturall scrolling for mouse
+    - name: set natural scroll for mouse
+      become_user: sergpolly
+      dconf:
+        key: "org/gnome/desktop/peripherals/mouse/natural-scroll"
+        value: "true"
+        state: present
+
+    # set naturall scrolling for touchpad
+    - name: set natural scroll for touchpad
+      become_user: sergpolly
+      dconf:
+        key: "org/gnome/desktop/peripherals/touchpad/natural-scroll"
+        value: "true"
+        state: present
+
