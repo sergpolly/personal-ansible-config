@@ -4,9 +4,6 @@
   get_url:
     url: https://github.com/sergpolly/personal-ansible-config/raw/main/media/cat-astronaut-wallpaper.jpg
     dest: ~/Pictures/cat.jpg
-    owner: sergpolly
-    group: sergpolly
-    mode: 755
 
 # set wallpaper
 - name: set wallpaper
