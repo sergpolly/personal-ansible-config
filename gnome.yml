@@ -18,14 +18,14 @@
   become_user: sergpolly
   dconf:
     key: "/org/gnome/desktop/background/picture-options"
-    value: "'zoom'"
+    value: "'scaled'"
     state: present
 
 # set keyboard layouts
 - name: set available keyboard layouts
   become_user: sergpolly
   dconf:
-    key: "org/gnome/desktop/input-sources/sources"
+    key: "/org/gnome/desktop/input-sources/sources"
     value: "[('xkb', 'us'), ('xkb', 'ru')]"
     state: present
 
@@ -33,7 +33,7 @@
 - name: swap left ctrl and alt
   become_user: sergpolly
   dconf:
-    key: "org/gnome/desktop/input-sources/xkb-options"
+    key: "/org/gnome/desktop/input-sources/xkb-options"
     value: "['ctrl:swap_lalt_lctl']"
     state: present
 
@@ -41,7 +41,7 @@
 - name: set natural scroll for mouse
   become_user: sergpolly
   dconf:
-    key: "org/gnome/desktop/peripherals/mouse/natural-scroll"
+    key: "/org/gnome/desktop/peripherals/mouse/natural-scroll"
     value: "true"
     state: present
 
@@ -49,6 +49,6 @@
 - name: set natural scroll for touchpad
   become_user: sergpolly
   dconf:
-    key: "org/gnome/desktop/peripherals/touchpad/natural-scroll"
+    key: "/org/gnome/desktop/peripherals/touchpad/natural-scroll"
     value: "true"
     state: present
