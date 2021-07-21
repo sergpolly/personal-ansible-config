@@ -9,4 +9,4 @@
 # install miniconda
 - name: install miniconda
   become_user: sergpolly
-  command: "bash ~/install_conda.sh"
+  command: "bash ~/install_conda.sh -bf"
