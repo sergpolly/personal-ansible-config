@@ -1,5 +1,6 @@
 # copy favorite wallpaper locally
 - name: copy wallpaper
+  become_user: sergpolly
   get_url:
     url: https://github.com/sergpolly/personal-ansible-config/raw/main/media/cat-astronaut-wallpaper.jpg
     dest: ~/Pictures/cat.jpg
