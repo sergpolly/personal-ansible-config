@@ -16,7 +16,7 @@
     state: present
 
 # set wallpaper position
- - name: set wallpaper position
+- name: set wallpaper position
    become_user: sergpolly
    dconf:
      key: "/org/gnome/desktop/background/picture-options"
@@ -54,4 +54,3 @@
     key: "org/gnome/desktop/peripherals/touchpad/natural-scroll"
     value: "true"
     state: present
-
