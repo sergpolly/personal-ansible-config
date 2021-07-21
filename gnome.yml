@@ -17,11 +17,11 @@
 
 # set wallpaper position
 - name: set wallpaper position
-   become_user: sergpolly
-   dconf:
-     key: "/org/gnome/desktop/background/picture-options"
-     value: "'zoom'"
-     state: present
+  become_user: sergpolly
+  dconf:
+    key: "/org/gnome/desktop/background/picture-options"
+    value: "'zoom'"
+    state: present
 
 # set keyboard layouts
 - name: set available keyboard layouts
