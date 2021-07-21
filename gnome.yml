@@ -18,7 +18,7 @@
   become_user: sergpolly
   dconf:
     key: "/org/gnome/desktop/background/picture-options"
-    value: "'scaled'"
+    value: "'zoom'"
     state: present
 
 # set keyboard layouts
