@@ -11,9 +11,9 @@
     force_apt_get: "yes"
 
 - name: Add Docker GPG apt Key
-  apt_key:
-  url: https://download.docker.com/linux/ubuntu/gpg
-  state: present
+    apt_key:
+      url: https://download.docker.com/linux/ubuntu/gpg
+      state: present
 
 - name: Save the current Ubuntu release version into a variable
   shell: lsb_release -cs
@@ -21,19 +21,19 @@
 
 - name: Add Docker Repository
   apt_repository:
-  repo: "deb [arch=amd64] https://download.docker.com/linux/ubuntu {{ ubuntu_version.stdout }} stable"
-  state: present
+    repo: "deb [arch=amd64] https://download.docker.com/linux/ubuntu {{ ubuntu_version.stdout }} stable"
+    state: present
 
 - name: Update apt packages
   apt:
-  update_cache: "yes"
-  force_apt_get: "yes"
+    update_cache: "yes"
+    force_apt_get: "yes"
 
 - name: Install Docker
   apt:
-  name: "docker-ce"
-  state: present
-  force_apt_get: "yes"
+    name: "docker-ce"
+    state: present
+    force_apt_get: "yes"
 
 - name: Test Docker with hello world example
   shell: "docker run hello-world"
@@ -41,15 +41,15 @@
 
 - name: Show output of hello word example
   debug:
-  msg: "Container Output: {{hello_world_output.stdout}}"
+    msg: "Container Output: {{hello_world_output.stdout}}"
 
 - name: Create docker group
   group:
-  name: "docker"
-  state: present
+    name: "docker"
+    state: present
 
 - name: Adding sergpolly to docker group
   user:
-  name: "sergpolly"
-  groups: "docker"
-  append: "yes"
+    name: "sergpolly"
+    groups: "docker"
+    append: "yes"
