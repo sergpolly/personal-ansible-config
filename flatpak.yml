@@ -21,7 +21,7 @@
 - name: Install programms with flatpak3
   become_user: sergpolly
   community.general.flatpak:
-    name: com.github.PintaProject.Pinta
+    name: com.github.maoschanz.drawing 
     method: user
 
 - name: Install programms with flatpak4
