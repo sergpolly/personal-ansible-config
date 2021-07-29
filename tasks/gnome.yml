@@ -1,0 +1,54 @@
+# copy favorite wallpaper locally
+- name: copy wallpaper
+  become_user: sergpolly
+  get_url:
+    url: https://github.com/sergpolly/personal-ansible-config/raw/main/media/cat-astronaut-wallpaper.jpg
+    dest: ~/Pictures/cat.jpg
+
+# set wallpaper
+- name: set wallpaper
+  become_user: sergpolly
+  dconf:
+    key: "/org/gnome/desktop/background/picture-uri"
+    value: "'file:///home/sergpolly/Pictures/cat.jpg'"
+    state: present
+
+# set wallpaper position
+- name: set wallpaper position
+  become_user: sergpolly
+  dconf:
+    key: "/org/gnome/desktop/background/picture-options"
+    value: "'zoom'"
+    state: present
+
+# set keyboard layouts
+- name: set available keyboard layouts
+  become_user: sergpolly
+  dconf:
+    key: "/org/gnome/desktop/input-sources/sources"
+    value: "[('xkb', 'us'), ('xkb', 'ru')]"
+    state: present
+
+# set keyboard swap lctrl and lalt
+- name: swap left ctrl and alt
+  become_user: sergpolly
+  dconf:
+    key: "/org/gnome/desktop/input-sources/xkb-options"
+    value: "['ctrl:swap_lalt_lctl']"
+    state: present
+
+# set naturall scrolling for mouse
+- name: set natural scroll for mouse
+  become_user: sergpolly
+  dconf:
+    key: "/org/gnome/desktop/peripherals/mouse/natural-scroll"
+    value: "true"
+    state: present
+
+# set naturall scrolling for touchpad
+- name: set natural scroll for touchpad
+  become_user: sergpolly
+  dconf:
+    key: "/org/gnome/desktop/peripherals/touchpad/natural-scroll"
+    value: "true"
+    state: present
