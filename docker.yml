@@ -53,3 +53,4 @@
     name: "sergpolly"
     groups: "docker"
     append: "yes"
+# Adding to the docker groups requires reboot
