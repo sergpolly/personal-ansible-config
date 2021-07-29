@@ -14,6 +14,12 @@
         - htop
         - tmux
         - psutils
+    - name: Install programms with flatpak
+      become_user: sergpolly
+      flatpak:
+        name: com.spotify.client
+        state: present
+        method: user
     - include: gnome.yml
     - include: conda.yml
     - include: docker.yml
