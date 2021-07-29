@@ -16,3 +16,4 @@
         - psutils
     - include: gnome.yml
     - include: conda.yml
+    - include: docker.yml
