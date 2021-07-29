@@ -7,14 +7,14 @@
       changed_when: False
 
   tasks:
-    # - include: tasks/users.yml
     - name: Install packages
-      apt: name={{item}}
-      with_items:
-        - htop
-        - tmux
-        - psutils
-        - tree 
+      apt:
+        name:
+          - htop
+          - tmux
+          - psutils
+          - tree 
+
     - include: gnome.yml
     - include: conda.yml
     - include: flatpak.yml 
