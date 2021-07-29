@@ -1,11 +1,19 @@
+- name: Add the flathub flatpak repository remote to the user installation
+  become_user: sergpolly
+  community.general.flatpak_remote:
+    name: flathub
+    state: present
+    flatpakrepo_url: https://dl.flathub.org/repo/flathub.flatpakrepo
+    method: user
+
 - name: Install programms with flatpak
   become_user: sergpolly
   community.general.flatpak:
     name:
       - com.spotify.client
       - us.zoom.Zoom
-      - com.github.PintaProject.Pinta 
-      - com.leinardi.gwe 
+      - com.github.PintaProject.Pinta
+      - com.leinardi.gwe
       - com.sublimetext.three
     state: present
     method: user
