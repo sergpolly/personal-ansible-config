@@ -15,5 +15,4 @@
       - com.github.PintaProject.Pinta
       - com.leinardi.gwe
       - com.sublimetext.three
-    state: present
     method: user
