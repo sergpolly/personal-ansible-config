@@ -1,6 +1,6 @@
 - name: Install programms with flatpak
   become_user: sergpolly
-  flatpak:
+  community.general.flatpak:
     name:
       - com.spotify.client
       - us.zoom.Zoom
