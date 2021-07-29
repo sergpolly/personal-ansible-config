@@ -15,7 +15,8 @@
           - psutils
           - tree 
 
-    - include: gnome.yml
-    - include: conda.yml
-    - include: flatpak.yml 
-    - include: docker.yml
+    - include: tasks/gnome.yml
+    - include: tasks/conda.yml
+    - include: tasks/flatpak.yml 
+    - include: tasks/docker.yml
+    - include: tasks/ssh.yml
