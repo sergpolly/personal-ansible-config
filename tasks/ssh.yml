@@ -1,3 +1,12 @@
+- name: create .ssh dir
+  file:
+    path: /home/sergpolly/.ssh
+    state: directory
+    mode: '644'
+    owner: sergpolly
+    group: sergpolly
+
+
 - name: Create the id_rsa private key and id_rsa.pub public certificate
   openssh_keypair:
     path: /home/sergpolly/.ssh/id_rsa
