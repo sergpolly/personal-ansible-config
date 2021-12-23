@@ -1,4 +1,5 @@
 - name: create .ssh dir
+  become_user: sergpolly
   file:
     path: $HOME/.ssh
     state: directory
@@ -8,6 +9,7 @@
 
 
 - name: Create the id_rsa private key and id_rsa.pub public certificate
+  become_user: sergpolly
   openssh_keypair:
     path: $HOME/.ssh/id_rsa
     group: sergpolly
@@ -15,6 +17,7 @@
     mode: 0600
 
 - name: Change permissions for the public part of the key
+  become_user: sergpolly
   file:
     path: $HOME/.ssh/id_rsa.pub
     group: sergpolly
@@ -22,6 +25,7 @@
     mode: 0644
 
 - name: Copy config to .ssh
+  become_user: sergpolly
   copy:
     src: media/config
     dest: $HOME/.ssh

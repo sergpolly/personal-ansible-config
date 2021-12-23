@@ -29,6 +29,22 @@
     update_cache: "yes"
     force_apt_get: "yes"
 
+- name: create etc/docker to store docker configs
+  ansible.builtin.file:
+    path: /etc/docker
+    state: directory
+    owner: root
+    group: root
+    mode: '0775'
+
+- name: Copy docker.daemon to prevent Umass routing issues
+  ansible.builtin.copy:
+    src: media/daemon.json
+    dest: /etc/docker/daemon.json
+    owner: root
+    group: root
+    mode: '0644'
+
 - name: Install Docker
   apt:
     name: "docker-ce"

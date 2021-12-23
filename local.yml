@@ -11,6 +11,8 @@
       apt:
         name:
           - htop
+          - vim
+          - xclip
           - tmux
           - python3-psutil
           - tree 
