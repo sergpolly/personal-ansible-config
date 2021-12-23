@@ -10,3 +10,12 @@
 - name: install miniconda
   become_user: sergpolly
   command: "bash ~/install_conda.sh -bf"
+
+- name: Remove the installer
+  file:
+    state: absent
+    path: ~/install_conda.sh
+
+- name: Add miniconda bin to path
+  become: True
+  shell: echo 'export PATH=$HOME/miniconda3/bin:$PATH' >> $HOME/.bashrc

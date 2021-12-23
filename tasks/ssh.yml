@@ -1,16 +1,30 @@
 - name: create .ssh dir
   file:
-    path: /home/sergpolly/.ssh
+    path: $HOME/.ssh
     state: directory
-    mode: '700'
+    mode: 0700
     owner: sergpolly
     group: sergpolly
 
 
 - name: Create the id_rsa private key and id_rsa.pub public certificate
   openssh_keypair:
-    path: /home/sergpolly/.ssh/id_rsa
+    path: $HOME/.ssh/id_rsa
     group: sergpolly
     owner: sergpolly
-    mode: '644'
+    mode: 0600
 
+- name: Change permissions for the public part of the key
+  file:
+    path: $HOME/.ssh/id_rsa.pub
+    group: sergpolly
+    owner: sergpolly
+    mode: 0644
+
+- name: Copy config to .ssh
+  copy:
+    src: media/config
+    dest: $HOME/.ssh
+    group: sergpolly
+    owner: sergpolly
+    mode: 0600
