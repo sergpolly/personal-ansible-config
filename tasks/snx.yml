@@ -1,0 +1,12 @@
+# install some packages needed for SNX
+- name: Install packages needed for SNX
+  apt:
+    name:
+      - xterm
+      - libnss3-tools #certutils
+      - default-jdk
+      - libstdc++5:i386
+      - libpam0g:i386
+      - libx11-6:i386
+    state: present
+    force_apt_get: "yes"
