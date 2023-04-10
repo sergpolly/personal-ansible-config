@@ -17,6 +17,7 @@
           - python3-psutil
           - tree
           - flatpak
+          - neofetch
 
     - include: tasks/gnome.yml
     - include: tasks/conda.yml
