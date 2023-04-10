@@ -15,7 +15,8 @@
           - xclip
           - tmux
           - python3-psutil
-          - tree 
+          - tree
+          - flatpak
 
     - include: tasks/gnome.yml
     - include: tasks/conda.yml
